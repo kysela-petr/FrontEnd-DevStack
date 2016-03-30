@@ -7,9 +7,9 @@ Build template based on Twitter Bootstrap
 ## How to start
 
 1.  Download or clone repository
-2.  run npm update
-3.  run bower update
-4.  generate favicon, iOS, Android and MS tiles <http://realfavicongenerator.net>
+2.  run npm install --save
+3.  run bower install --save
+4.  generate favicon, iOS... <http://realfavicongenerator.net> and copy to root
 5.  run **grunt default** and develop or **grunt dist** for production
 
 ## How to setup virtual host
