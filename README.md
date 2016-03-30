@@ -38,4 +38,4 @@ Build template based on Twitter Bootstrap
     </VirtualHost>
 ```
 
-3.  Restart apache `#!bash sudo service apache2 restart`
+Restart apache now `#!bash sudo service apache2 restart`
