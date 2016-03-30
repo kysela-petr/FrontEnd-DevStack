@@ -225,7 +225,7 @@ module.exports = function(grunt) {
                 tasks: ['clean:scriptApp', 'jshint', 'concat:application', 'concat:script']
             },
             template: {
-                files: ['www/_template/*.html', 'www/_template/**/*.html'],
+                files: ['www/_templates/*.html', 'www/_templates/**/*.html'],
                 tasks: []
             },
             image: {
