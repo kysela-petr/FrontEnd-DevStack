@@ -198,6 +198,18 @@ module.exports = function(grunt) {
             },
         },
 
+        codekit: {
+            compile_templates: {
+                files: [{
+                    expand: true,
+                    cwd: 'www/src/templates',
+                    src: ['*.kit', '**/*.kit'],
+                    dest: 'www/dist/templates',
+                    ext: '.html'
+                }]
+            }
+        },
+
         // watch task pro styly, js, šablony i gruntfile
         watch: {
             style_bootstrap: {
@@ -213,8 +225,8 @@ module.exports = function(grunt) {
                 tasks: ['clean:scriptApp', 'jshint', 'concat:application', 'concat:script']
             },
             template: {
-                files: ['www/_templates/*.html', 'www/_templates/**/*.html'],
-                tasks: []
+                files: ['www/src/templates/*.kit', 'www/src/templates/**/*.kit'],
+                tasks: ['codekit']
             },
             image: {
                 files: 'www/src/image/*',
@@ -242,7 +254,7 @@ module.exports = function(grunt) {
     });
 
     // vývojové prostředí "grunt default"
-    grunt.registerTask('default', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'browserSync', 'watch']);
+    grunt.registerTask('default', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'codekit', 'browserSync', 'watch']);
     // produkční prostředí -> vygenerování minifikovaných souborů pro commit "grunt build"
-    grunt.registerTask('build', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'uglify']);
+    grunt.registerTask('build', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'codekit', 'uglify']);
 };
