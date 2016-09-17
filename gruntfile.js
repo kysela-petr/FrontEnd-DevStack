@@ -34,19 +34,19 @@ module.exports = function(grunt) {
             },
             vendors: {
                 src: devStackOptions.vendorsJS,
-                dest: 'dist/js/vendors.js'
+                dest: 'build/js/vendors.js'
             },
             application: {
                 src: ['src/js/*.js', 'src/js/**/*.js', 'src/js/**/**/*.js'],
-                dest: 'dist/js/main.js'
+                dest: 'build/js/main.js'
             },
             script: {
-                src: ['dist/js/vendors.js', 'dist/js/main.js'],
-                dest: 'dist/js/main.js'
+                src: ['build/js/vendors.js', 'build/js/main.js'],
+                dest: 'build/js/main.js'
             },
             style: {
-                src: 'dist/style/*.css',
-                dest: 'dist/style/main.css'
+                src: 'build/style/*.css',
+                dest: 'build/style/main.css'
             }
         },
 
@@ -59,12 +59,12 @@ module.exports = function(grunt) {
             },
             vendors: {
                 files: {
-                    'dist/js/vendors.js': 'dist/js/vendors.js'
+                    'build/js/vendors.js': 'build/js/vendors.js'
                 }
             },
             application: {
                 files: {
-                    'dist/js/main.js': 'dist/js/main.js'
+                    'build/js/main.js': 'build/js/main.js'
                 }
             }
         },
@@ -82,12 +82,12 @@ module.exports = function(grunt) {
         less: {
             bootstrap: {
                 files: {
-                    'dist/style/bootstrap.css': 'src/style/bootstrap/main.less',
+                    'build/style/bootstrap.css': 'src/style/bootstrap/main.less',
                 }
             },
             theme: {
                 files: {
-                    'dist/style/theme.css': 'src/style/theme/main.less',
+                    'build/style/theme.css': 'src/style/theme/main.less',
                 }
             }
         },
@@ -104,10 +104,10 @@ module.exports = function(grunt) {
                 ]
             },
             bootstrap: {
-                src: 'dist/style/bootstrap.css'
+                src: 'build/style/bootstrap.css'
             },
             theme: {
-                src: 'dist/style/theme.css'
+                src: 'build/style/theme.css'
             },
         },
 
@@ -116,12 +116,12 @@ module.exports = function(grunt) {
         cssmin: {
             bootstrap: {
                 files: {
-                    'dist/style/bootstrap.css': 'dist/style/bootstrap.css'
+                    'build/style/bootstrap.css': 'build/style/bootstrap.css'
                 }
             },
             theme: {
                 files: {
-                    'dist/style/theme.css': 'dist/style/theme.css'
+                    'build/style/theme.css': 'build/style/theme.css'
                 }
             }
         },
@@ -130,18 +130,18 @@ module.exports = function(grunt) {
         copy: {
             lte: {
                 src: 'bower_components/lt-ie-9/lt-ie-9.min.js',
-                dest: 'dist/js/lt-ie-9.min.js'
+                dest: 'build/js/lt-ie-9.min.js'
             },
             font_awesome_style: {
                 src: 'bower_components/font-awesome/css/font-awesome.min.css',
-                dest: 'dist/style/font-awesome.min.css'
+                dest: 'build/style/font-awesome.min.css'
             },
             font_awesome_font: {
                 filter: 'isFile',
                 flatten: true,
                 expand: true,
                 src: 'bower_components/font-awesome/fonts/*',
-                dest: 'dist/font/'
+                dest: 'build/font/'
             }
         },
 
@@ -151,26 +151,26 @@ module.exports = function(grunt) {
                 options: {
                     patterns: [{
                         match: '../fonts/',
-                        replacement: '../../dist/font/'
+                        replacement: '../../build/font/'
                     }],
                     usePrefix: false
                 },
                 files: [{
                     expand: false,
                     flatten: true,
-                    src: 'dist/style/font-awesome.min.css',
-                    dest: 'dist/style/font-awesome.min.css'
+                    src: 'build/style/font-awesome.min.css',
+                    dest: 'build/style/font-awesome.min.css'
                 }]
             }
         },
 
         // mazání vygenerovaných souborů před novým generováním
         clean: {
-            bootstrap: ['dist/style/bootstrap.css', 'dist/style/main.css'],
-            theme: ['dist/style/theme.css', 'dist/style/main.css'],
-            style: 'dist/style/*.css',
-            scriptApp: 'dist/js/main.js',
-            script: 'dist/js/*.js'
+            bootstrap: ['build/style/bootstrap.css', 'build/style/main.css'],
+            theme: ['build/style/theme.css', 'build/style/main.css'],
+            style: 'build/style/*.css',
+            scriptApp: 'build/js/main.js',
+            script: 'build/js/*.js'
         },
 
         // minifikace obrázků a grafiky webu,
@@ -193,7 +193,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/image/',
                     src: ['*.{png,jpg,gif,svg}'],
-                    dest: 'dist/image/'
+                    dest: 'build/image/'
                 }]
             },
         },
@@ -204,7 +204,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/templates',
                     src: ['*.kit', '**/*.kit'],
-                    dest: 'dist/templates',
+                    dest: 'build/templates',
                     ext: '.html'
                 }]
             }
