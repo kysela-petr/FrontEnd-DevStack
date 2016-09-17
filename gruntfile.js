@@ -132,10 +132,6 @@ module.exports = function(grunt) {
                 src: 'bower_components/lt-ie-9/lt-ie-9.min.js',
                 dest: 'www/dist/js/lt-ie-9.min.js'
             },
-            livereload: {
-                src: 'bower_components/livereload-js/dist/livereload.js',
-                dest: 'www/livereload.js'
-            },
             font_awesome_style: {
                 src: 'bower_components/font-awesome/css/font-awesome.min.css',
                 dest: 'www/dist/style/font-awesome.min.css'
@@ -204,14 +200,6 @@ module.exports = function(grunt) {
 
         // watch task pro styly, js, šablony i gruntfile
         watch: {
-            options: {
-                livereload: {
-                    host: 'localhost',
-                    port: 35729
-                },
-                interrupt: true,
-                debounceDelay: 1
-            },
             style_bootstrap: {
                 files: 'www/src/style/bootstrap/*.less',
                 tasks: ['clean:bootstrap', 'less:bootstrap', 'concat:style']
@@ -235,6 +223,17 @@ module.exports = function(grunt) {
             grunt: {
                 files: ['Gruntfile.js']
             }
+        },
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: ['www/*', 'www/**/*', 'www/**/**/*']
+                },
+                options: {
+                    watchTask: true,
+                    server: "./www/"
+                }
+            }
         }
     });
 
@@ -242,8 +241,8 @@ module.exports = function(grunt) {
         concat: 'grunt-contrib-concat'
     });
 
-    // vývojové prostředí s livereloadem "grunt default"
-    grunt.registerTask('default', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'watch']);
+    // vývojové prostředí "grunt default"
+    grunt.registerTask('default', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'browserSync', 'watch']);
     // produkční prostředí -> vygenerování minifikovaných souborů pro commit "grunt dist"
     grunt.registerTask('dist', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'uglify']);
 };

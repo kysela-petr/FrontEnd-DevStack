@@ -34,7 +34,6 @@
     "lt-ie-9": "^0.1.0",
     "bootstrap": "^3.3.6",
     "kss-template-kysela": "^0.1.6",
-    "livereload-js": "^2.2.1",
     "font-awesome": "^4.5.0"
   }
 }
