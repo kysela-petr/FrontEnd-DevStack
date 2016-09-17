@@ -34,19 +34,19 @@ module.exports = function(grunt) {
             },
             vendors: {
                 src: devStackOptions.vendorsJS,
-                dest: 'www/dist/js/vendors.js'
+                dest: 'dist/js/vendors.js'
             },
             application: {
-                src: ['www/src/js/*.js', 'www/src/js/**/*.js', 'www/src/js/**/**/*.js'],
-                dest: 'www/dist/js/main.js'
+                src: ['src/js/*.js', 'src/js/**/*.js', 'src/js/**/**/*.js'],
+                dest: 'dist/js/main.js'
             },
             script: {
-                src: ['www/dist/js/vendors.js', 'www/dist/js/main.js'],
-                dest: 'www/dist/js/main.js'
+                src: ['dist/js/vendors.js', 'dist/js/main.js'],
+                dest: 'dist/js/main.js'
             },
             style: {
-                src: 'www/dist/style/*.css',
-                dest: 'www/dist/style/main.css'
+                src: 'dist/style/*.css',
+                dest: 'dist/style/main.css'
             }
         },
 
@@ -59,19 +59,19 @@ module.exports = function(grunt) {
             },
             vendors: {
                 files: {
-                    'www/dist/js/vendors.js': 'www/dist/js/vendors.js'
+                    'dist/js/vendors.js': 'dist/js/vendors.js'
                 }
             },
             application: {
                 files: {
-                    'www/dist/js/main.js': 'www/dist/js/main.js'
+                    'dist/js/main.js': 'dist/js/main.js'
                 }
             }
         },
 
         // nebudeš prasit JavaScript a nebudeš!
         jshint: {
-            main: ['www/src/js/*.js', 'www/src/js/**/*.js', 'www/src/js/**/**/*.js'],
+            main: ['src/js/*.js', 'src/js/**/*.js', 'src/js/**/**/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -82,12 +82,12 @@ module.exports = function(grunt) {
         less: {
             bootstrap: {
                 files: {
-                    'www/dist/style/bootstrap.css': 'www/src/style/bootstrap/main.less',
+                    'dist/style/bootstrap.css': 'src/style/bootstrap/main.less',
                 }
             },
             theme: {
                 files: {
-                    'www/dist/style/theme.css': 'www/src/style/theme/main.less',
+                    'dist/style/theme.css': 'src/style/theme/main.less',
                 }
             }
         },
@@ -104,10 +104,10 @@ module.exports = function(grunt) {
                 ]
             },
             bootstrap: {
-                src: 'www/dist/style/bootstrap.css'
+                src: 'dist/style/bootstrap.css'
             },
             theme: {
-                src: 'www/dist/style/theme.css'
+                src: 'dist/style/theme.css'
             },
         },
 
@@ -116,12 +116,12 @@ module.exports = function(grunt) {
         cssmin: {
             bootstrap: {
                 files: {
-                    'www/dist/style/bootstrap.css': 'www/dist/style/bootstrap.css'
+                    'dist/style/bootstrap.css': 'dist/style/bootstrap.css'
                 }
             },
             theme: {
                 files: {
-                    'www/dist/style/theme.css': 'www/dist/style/theme.css'
+                    'dist/style/theme.css': 'dist/style/theme.css'
                 }
             }
         },
@@ -130,18 +130,18 @@ module.exports = function(grunt) {
         copy: {
             lte: {
                 src: 'bower_components/lt-ie-9/lt-ie-9.min.js',
-                dest: 'www/dist/js/lt-ie-9.min.js'
+                dest: 'dist/js/lt-ie-9.min.js'
             },
             font_awesome_style: {
                 src: 'bower_components/font-awesome/css/font-awesome.min.css',
-                dest: 'www/dist/style/font-awesome.min.css'
+                dest: 'dist/style/font-awesome.min.css'
             },
             font_awesome_font: {
                 filter: 'isFile',
                 flatten: true,
                 expand: true,
                 src: 'bower_components/font-awesome/fonts/*',
-                dest: 'www/dist/font/'
+                dest: 'dist/font/'
             }
         },
 
@@ -158,19 +158,19 @@ module.exports = function(grunt) {
                 files: [{
                     expand: false,
                     flatten: true,
-                    src: 'www/dist/style/font-awesome.min.css',
-                    dest: 'www/dist/style/font-awesome.min.css'
+                    src: 'dist/style/font-awesome.min.css',
+                    dest: 'dist/style/font-awesome.min.css'
                 }]
             }
         },
 
         // mazání vygenerovaných souborů před novým generováním
         clean: {
-            bootstrap: ['www/dist/style/bootstrap.css', 'www/dist/style/main.css'],
-            theme: ['www/dist/style/theme.css', 'www/dist/style/main.css'],
-            style: 'www/dist/style/*.css',
-            scriptApp: 'www/dist/js/main.js',
-            script: 'www/dist/js/*.js'
+            bootstrap: ['dist/style/bootstrap.css', 'dist/style/main.css'],
+            theme: ['dist/style/theme.css', 'dist/style/main.css'],
+            style: 'dist/style/*.css',
+            scriptApp: 'dist/js/main.js',
+            script: 'dist/js/*.js'
         },
 
         // minifikace obrázků a grafiky webu,
@@ -191,9 +191,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'www/src/image/',
+                    cwd: 'src/image/',
                     src: ['*.{png,jpg,gif,svg}'],
-                    dest: 'www/dist/image/'
+                    dest: 'dist/image/'
                 }]
             },
         },
@@ -202,9 +202,9 @@ module.exports = function(grunt) {
             compile_templates: {
                 files: [{
                     expand: true,
-                    cwd: 'www/src/templates',
+                    cwd: 'src/templates',
                     src: ['*.kit', '**/*.kit'],
-                    dest: 'www/dist/templates',
+                    dest: 'dist/templates',
                     ext: '.html'
                 }]
             }
@@ -213,23 +213,23 @@ module.exports = function(grunt) {
         // watch task pro styly, js, šablony i gruntfile
         watch: {
             style_bootstrap: {
-                files: 'www/src/style/bootstrap/*.less',
+                files: 'src/style/bootstrap/*.less',
                 tasks: ['clean:bootstrap', 'less:bootstrap', 'concat:style']
             },
             style_theme: {
-                files: ['www/src/style/theme/*.less', 'www/src/style/theme/**/*.less'],
+                files: ['src/style/theme/*.less', 'src/style/theme/**/*.less'],
                 tasks: ['clean:theme', 'less:theme', 'concat:style']
             },
             script: {
-                files: ['www/src/js/*.js', 'www/src/js/**/*.js'],
+                files: ['src/js/*.js', 'src/js/**/*.js'],
                 tasks: ['clean:scriptApp', 'jshint', 'concat:application', 'concat:script']
             },
             template: {
-                files: ['www/src/templates/*.kit', 'www/src/templates/**/*.kit'],
+                files: ['src/templates/*.kit', 'src/templates/**/*.kit'],
                 tasks: ['codekit']
             },
             image: {
-                files: 'www/src/image/*',
+                files: 'src/image/*',
                 tasks: ['image']
             },
             grunt: {
@@ -239,11 +239,11 @@ module.exports = function(grunt) {
         browserSync: {
             dev: {
                 bsFiles: {
-                    src: ['www/*', 'www/**/*', 'www/**/**/*']
+                    src: ['*', '**/*', '**/**/*']
                 },
                 options: {
                     watchTask: true,
-                    server: "./www/"
+                    server: "./"
                 }
             }
         }
