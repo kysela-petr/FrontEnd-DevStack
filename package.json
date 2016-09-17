@@ -2,7 +2,7 @@
   "name": "frontend_devstack",
   "version": "1.0.0",
   "description": "frontend devstack for bootstrap based project",
-  "dependencies": {
+  "devDependencies": {
     "autoprefixer": "^6.3.3",
     "csslint": "^0.10.0",
     "grunt": "^0.4.5",
@@ -27,7 +27,6 @@
     "time-grunt": "^1.3.0",
     "grunt-browser-sync": "^2.2.0"
   },
-  "devDependencies": {},
   "author": "Kysela Petr petr@kysela.biz",
   "license": [
     "MIT",
