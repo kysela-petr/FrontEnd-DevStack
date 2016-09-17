@@ -243,6 +243,6 @@ module.exports = function(grunt) {
 
     // vývojové prostředí "grunt default"
     grunt.registerTask('default', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'browserSync', 'watch']);
-    // produkční prostředí -> vygenerování minifikovaných souborů pro commit "grunt dist"
-    grunt.registerTask('dist', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'uglify']);
+    // produkční prostředí -> vygenerování minifikovaných souborů pro commit "grunt build"
+    grunt.registerTask('build', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'uglify']);
 };
