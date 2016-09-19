@@ -114,6 +114,9 @@ module.exports = function(grunt) {
         // minifikace stylů bootstrapu a samotné šablony webu
         // -> rozděleno do samostatných subtasků kvůli rychlosti
         cssmin: {
+            options: {
+                keepSpecialComments: 0
+            },
             bootstrap: {
                 files: {
                     'build/style/bootstrap.css': 'build/style/bootstrap.css'
@@ -122,6 +125,18 @@ module.exports = function(grunt) {
             theme: {
                 files: {
                     'build/style/theme.css': 'build/style/theme.css'
+                }
+            }
+        },
+
+        uncss: {
+            build: {
+                files: {
+                    'build/style/main.css': ['build/templates/*.html']
+                },
+                options: {
+                    report: 'gzip',
+                    ignore: ['.js-.*', '#.*']
                 }
             }
         },
@@ -147,7 +162,7 @@ module.exports = function(grunt) {
 
         // nahradit adresu k font awesome, jinak vyhazuje 404
         replace: {
-            dist: {
+            font_path: {
                 options: {
                     patterns: [{
                         match: '../fonts/',
@@ -160,6 +175,21 @@ module.exports = function(grunt) {
                     flatten: true,
                     src: 'build/style/font-awesome.min.css',
                     dest: 'build/style/font-awesome.min.css'
+                }]
+            },
+            remove_comments: {
+                options: {
+                    patterns: [{
+                        match: RegExp(/\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/gm),
+                        replacement: ''
+                    }],
+                    usePrefix: false
+                },
+                files: [{
+                    expand: false,
+                    flatten: true,
+                    src: 'build/style/main.css',
+                    dest: 'build/style/main.css'
                 }]
             }
         },
@@ -254,7 +284,7 @@ module.exports = function(grunt) {
     });
 
     // vývojové prostředí "grunt default"
-    grunt.registerTask('default', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'codekit', 'browserSync', 'watch']);
+    grunt.registerTask('default', ['clean', 'copy', 'replace:font_path', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'codekit', 'browserSync', 'watch']);
     // produkční prostředí -> vygenerování minifikovaných souborů pro commit "grunt build"
-    grunt.registerTask('build', ['clean', 'copy', 'replace', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'codekit', 'uglify']);
+    grunt.registerTask('build', ['clean', 'copy', 'replace:font_path', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'codekit', 'uncss', 'replace:remove_comments', 'uglify']);
 };

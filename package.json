@@ -23,6 +23,7 @@
     "grunt-postcss": "^0.8.0",
     "grunt-replace": "^0.11.0",
     "grunt-spritesmith": "^6.3.0",
+    "grunt-uncss": "^0.6.1",
     "jit-grunt": "^0.10.0",
     "npm": "^3.8.2",
     "pixrem": "^3.0.0",
