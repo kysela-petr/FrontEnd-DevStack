@@ -228,6 +228,7 @@ module.exports = function(grunt) {
             },
         },
 
+        // zkompiluje *.kit soubory na kompletní *.html šablony
         codekit: {
             compile_templates: {
                 files: [{
