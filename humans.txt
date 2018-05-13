@@ -1,10 +1,11 @@
 # humanstxt.org/
 # The humans responsible & technology colophon
 #
-# eSports.cz
+# kysela.biz
 
 # TEAM
 
+    Kysela Petr -- founder -- www.kysela.biz
     <name> -- <role> -- <twitter>
 
 # THANKS

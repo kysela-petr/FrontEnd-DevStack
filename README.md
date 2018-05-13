@@ -1,6 +1,6 @@
 # FrontEnd DevStack
 
-Based on **Bootstrap 3** with **BrowserSync** and **Kit** templates.
+Based on **Bootstrap 4** with **BrowserSync** and **Kit** templates.
 
 ---
 
@@ -16,7 +16,7 @@ Based on **Bootstrap 3** with **BrowserSync** and **Kit** templates.
 -   [NPM](https://www.npmjs.com/)
 -   [Bower](https://bower.io/)
 -   [Grunt](http://gruntjs.com)
--   [Bootstrap 3](http://getbootstrap.com/)
+-   [Bootstrap 4](http://getbootstrap.com/)
 -   [BrowserSync](https://www.browsersync.io)
 -   [Kit templates](https://incident57.com/codekit/help.html#kit)
 -   [FontAwesome](http://fontawesome.io/)

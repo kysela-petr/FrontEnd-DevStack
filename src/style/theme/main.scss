@@ -1,0 +1,14 @@
+// Core variables and mixins
+
+@import "../../../bower_components/bootstrap/scss/functions";
+@import "../bootstrap/variables";
+@import "../../../bower_components/bootstrap/scss/mixins";
+
+
+html {
+    background-color: $body-bg;
+}
+
+body {
+    background-color: transparent;
+}

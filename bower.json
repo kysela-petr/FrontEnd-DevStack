@@ -32,8 +32,9 @@
   ],
   "dependencies": {
     "lt-ie-9": "^0.1.0",
-    "bootstrap": "^3.3.6",
+    "bootstrap": "^4.1.1",
     "kss-template-kysela": "^0.1.6",
-    "font-awesome": "^4.5.0"
+    "font-awesome": "^4.7.0",
+    "moment": "^2.22.1"
   }
 }

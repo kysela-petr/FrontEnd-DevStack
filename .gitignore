@@ -21,6 +21,8 @@
 *.sublime-workspace
 nbproject
 Thumbs.db
+.sass-cache/*
+package-lock.json
 
 # Folders to ignore
 bower_components/*

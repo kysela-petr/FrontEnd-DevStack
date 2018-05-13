@@ -8,18 +8,18 @@ module.exports = function(grunt) {
     var devStackOptions = {
         vendorsJS: [
             'bower_components/jquery/dist/jquery.min.js',
-            //  'bower_components/bootstrap/js/transition.js',
-            //  'bower_components/bootstrap/js/alert.js',
-            //  'bower_components/bootstrap/js/button.js',
-            //  'bower_components/bootstrap/js/carousel.js',
-            //  'bower_components/bootstrap/js/collapse.js',
-            //  'bower_components/bootstrap/js/dropdown.js',
-            //  'bower_components/bootstrap/js/modal.js',
-            //  'bower_components/bootstrap/js/tooltip.js',
-            //  'bower_components/bootstrap/js/popover.js',
-            //  'bower_components/bootstrap/js/scrollspy.js',
-            //  'bower_components/bootstrap/js/tab.js',
-            //  'bower_components/bootstrap/js/affix.js'
+            //  'bower_components/bootstrap/js/dist/alert.js',
+            //  'bower_components/bootstrap/js/dist/button.js',
+            //  'bower_components/bootstrap/js/dist/carousel.js',
+            //  'bower_components/bootstrap/js/dist/collapse.js',
+            //  'bower_components/bootstrap/js/dist/dropdown.js',
+            //  'bower_components/bootstrap/js/dist/index.js',
+            //  'bower_components/bootstrap/js/dist/modal.js',
+            //  'bower_components/bootstrap/js/dist/popover.js',
+            //  'bower_components/bootstrap/js/dist/scrollspy.js',
+            //  'bower_components/bootstrap/js/dist/tab.js',
+            //  'bower_components/bootstrap/js/dist/tooltip.js',
+            //  'bower_components/bootstrap/js/dist/util.js'
         ]
     };
 
@@ -79,15 +79,15 @@ module.exports = function(grunt) {
 
         // kompilace stylů bootstrapu a samotné šablony webu
         // -> rozděleno do samostatných subtasků kvůli rychlosti
-        less: {
+        sass: {
             bootstrap: {
                 files: {
-                    'build/style/bootstrap.css': 'src/style/bootstrap/main.less',
+                    'build/style/bootstrap.css': 'src/style/bootstrap/main.scss',
                 }
             },
             theme: {
                 files: {
-                    'build/style/theme.css': 'src/style/theme/main.less',
+                    'build/style/theme.css': 'src/style/theme/main.scss',
                 }
             }
         },
@@ -244,12 +244,12 @@ module.exports = function(grunt) {
         // watch task pro styly, js, šablony i gruntfile
         watch: {
             style_bootstrap: {
-                files: 'src/style/bootstrap/*.less',
-                tasks: ['clean:bootstrap', 'less:bootstrap', 'concat:style']
+                files: 'src/style/bootstrap/*.scss',
+                tasks: ['clean:bootstrap', 'sass:bootstrap', 'concat:style']
             },
             style_theme: {
-                files: ['src/style/theme/*.less', 'src/style/theme/**/*.less'],
-                tasks: ['clean:theme', 'less:theme', 'concat:style']
+                files: ['src/style/theme/*.scss', 'src/style/theme/**/*.scss'],
+                tasks: ['clean:theme', 'sass:theme', 'concat:style']
             },
             script: {
                 files: ['src/js/*.js', 'src/js/**/*.js'],
@@ -285,7 +285,7 @@ module.exports = function(grunt) {
     });
 
     // vývojové prostředí "grunt default"
-    grunt.registerTask('default', ['clean', 'copy', 'replace:font_path', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'concat:style', 'codekit', 'browserSync', 'watch']);
+    grunt.registerTask('default', ['clean', 'copy', 'replace:font_path', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'sass', 'concat:style', 'codekit', 'browserSync', 'watch']);
     // produkční prostředí -> vygenerování minifikovaných souborů pro commit "grunt build"
-    grunt.registerTask('build', ['clean', 'copy', 'replace:font_path', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'less', 'postcss', 'cssmin', 'concat:style', 'codekit', 'uncss', 'replace:remove_comments', 'uglify']);
+    grunt.registerTask('build', ['clean', 'copy', 'replace:font_path', 'concat:vendors', 'jshint', 'concat:application', 'concat:script', 'image', 'sass', 'postcss', 'cssmin', 'concat:style', 'codekit', 'uncss', 'replace:remove_comments', 'uglify']);
 };
